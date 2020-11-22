@@ -1,3 +1,7 @@
+# About
+
+I created this simple music player app using React JS and styled it using SASS. All music info and audio used in this project was taken from [Chillhop.com](https://chillhop.com/).
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
