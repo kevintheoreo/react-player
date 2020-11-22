@@ -1,0 +1,38 @@
+.nav {
+  min-height: 5vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 2rem 1rem 2rem;
+  background-color: rgb(250, 250, 250);
+
+  button {
+    z-index: 2;
+    transition: all 0.2s ease;
+    padding: 0.5rem;
+    background: none;
+    border: 1px solid black;
+    cursor: pointer;
+    &:hover {
+      background: black;
+      color: white;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+
+  svg {
+    padding-left: 4px;
+  }
+}
+
+// @media screen and (max-width: 768px) {
+//   .nav {
+//     button {
+//       position: fixed;
+//       top: 1rem;
+//       right: 1rem;
+//     }
+//   }
+// }

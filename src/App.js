@@ -1,23 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useRef } from "react";
+import Song from "./components/Song";
+import Player from "./components/Player";
+import Library from "./components/Library";
+import "./styles/app.scss";
+import data from "./data";
+import Nav from "./components/Nav";
 
 function App() {
+  const [songs, setSongs] = useState(data);
+  const [currentSong, setCurrentSong] = useState(songs[0]);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [libraryIsOpen, setLibraryIsOpen] = useState(false);
+  const [songTime, setSongTime] = useState({
+    currentTime: 0,
+    duration: 0,
+    animationPercentage: 0,
+  });
+
+  //Ref
+  const audioRef = useRef(null);
+
+  //Handlers
+  const songEndHandler = async () => {
+    let songIndex = songs.findIndex((item) => item.id === currentSong.id);
+    if (isPlaying)
+      await setCurrentSong({
+        ...songs[(songIndex + 1) % songs.length],
+        active: true,
+      });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`App ${libraryIsOpen ? "library-active" : ""}`}>
+      <Nav libraryIsOpen={libraryIsOpen} setLibraryIsOpen={setLibraryIsOpen} />
+      <Library
+        songs={songs}
+        setSongs={setSongs}
+        currentSong={currentSong}
+        setCurrentSong={setCurrentSong}
+        audioRef={audioRef}
+        isPlaying={isPlaying}
+        libraryIsOpen={libraryIsOpen}
+      />
+      <Song currentSong={currentSong} />
+      <Player
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
+        currentSong={currentSong}
+        setCurrentSong={setCurrentSong}
+        songs={songs}
+        setSongs={setSongs}
+        audioRef={audioRef}
+        songTime={songTime}
+        setSongTime={setSongTime}
+        songEndHandler={songEndHandler}
+      />
     </div>
   );
 }
