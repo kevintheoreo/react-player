@@ -20,7 +20,7 @@ const Nav = ({
   };
   return (
     <div className="nav">
-      <h1>MusicPlayer</h1>
+      <h1>KEVIN'S MUSIC PLAYER</h1>
       <div>
         <button onClick={aboutToggleHandler}>
           About
