@@ -5,12 +5,14 @@ import Library from "./components/Library";
 import "./styles/app.scss";
 import data from "./data";
 import Nav from "./components/Nav";
+import About from "./components/About";
 
 function App() {
   const [songs, setSongs] = useState(data);
   const [currentSong, setCurrentSong] = useState(songs[0]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [libraryIsOpen, setLibraryIsOpen] = useState(false);
+  const [aboutIsOpen, setAboutIsOpen] = useState(false);
   const [songTime, setSongTime] = useState({
     currentTime: 0,
     duration: 0,
@@ -32,7 +34,13 @@ function App() {
 
   return (
     <div className={`App ${libraryIsOpen ? "library-active" : ""}`}>
-      <Nav libraryIsOpen={libraryIsOpen} setLibraryIsOpen={setLibraryIsOpen} />
+      <About aboutIsOpen={aboutIsOpen} setAboutIsOpen={setAboutIsOpen} />
+      <Nav
+        libraryIsOpen={libraryIsOpen}
+        setLibraryIsOpen={setLibraryIsOpen}
+        aboutIsOpen={aboutIsOpen}
+        setAboutIsOpen={setAboutIsOpen}
+      />
       <Library
         songs={songs}
         setSongs={setSongs}
@@ -41,6 +49,7 @@ function App() {
         audioRef={audioRef}
         isPlaying={isPlaying}
         libraryIsOpen={libraryIsOpen}
+        setLibraryIsOpen={setLibraryIsOpen}
       />
       <Song currentSong={currentSong} />
       <Player

@@ -1,0 +1,39 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 20rem;
+  height: 15rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  border-radius: 1rem;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+.about-hidden {
+  transform: translateY(-100%);
+  opacity: 0%;
+}
+
+.about-header {
+  width: 20rem;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0rem 1rem;
+}
+
+.about-close-btn {
+  font-size: 1rem;
+}
+
+p {
+  margin: 1rem 1rem;
+}

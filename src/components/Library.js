@@ -1,5 +1,7 @@
 import React from "react";
 import LibrarySong from "./LibrarySong";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const Library = ({
   songs,
@@ -8,10 +10,22 @@ const Library = ({
   audioRef,
   isPlaying,
   libraryIsOpen,
+  setLibraryIsOpen,
 }) => {
   return (
     <div className={`library ${libraryIsOpen ? "" : "library-hidden"}`}>
-      <h1>Library</h1>
+      <div className="library-header">
+        <h1>Library</h1>
+        <div
+          className="close-btn"
+          onClick={() => {
+            setLibraryIsOpen(false);
+          }}
+        >
+          <FontAwesomeIcon icon={faTimes} />
+        </div>
+      </div>
+
       {songs.map((song) => {
         return (
           <LibrarySong

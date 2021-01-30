@@ -15,6 +15,23 @@
   }
 }
 
+.library-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  height: fit-content;
+  width: fit-content;
+  padding: 1rem;
+}
+
 .library-hidden {
   transform: translateX(-100%);
   opacity: 0%;
